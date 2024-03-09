@@ -21,6 +21,8 @@ body {
   height: 450px;
   background: transparent;
   border: 2px solid #566f7d;
+  box-shadow: 0 0 25px #0ef;
+  overflow: hidden;
 }
 
 .wrapper .form-box {
@@ -34,7 +36,6 @@ body {
   left: 0;
   padding: 0 40px;
 }
-
 
 .form-box h2 {
   font-size: 32px;
@@ -56,6 +57,16 @@ body {
   border: none;
   outline: none;
   border-bottom: 2px solid #fff;
+  padding-right: 23px;
+  font-size: 16px;
+  color: #c6dfcd;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+  border-bottom-color: #0ef;
 }
 
 .input-box label {
@@ -66,6 +77,13 @@ body {
   font-size: 16px;
   color: #fff;
   pointer-events: none;
+  transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+  color: #0ef;
 }
 
 .input-box i {
@@ -75,6 +93,12 @@ body {
   transform: translateY(-50%);
   font-size: 18px;
   color: #fff;
+  transform: 0.5s;
+}
+
+.input-box input:focus ~ i,
+.input-box input:valid ~ i {
+  color: #0ef;
 }
 
 .btn {
@@ -89,6 +113,24 @@ body {
   font-size: 16px;
   color: #fff;
   font-weight: 600;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 300%;
+  background: linear-gradient(#566f7d, #0ef, #566f7d, #0ef);
+  z-index: -1;
+  transition: 0.5;
+}
+
+.btn:hover::before {
+  top: 0;
 }
 
 .form-box .reg-link {
@@ -106,4 +148,42 @@ body {
 
 .reg-link p a:hover {
   text-decoration: underline;
+}
+
+.wrapper .info-text {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wrapper .info-text.login {
+  right: 0;
+  text-align: right;
+  padding: 0 40px 60px 150px;
+}
+
+.info-text h2 {
+  font-size: 36px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.info-text p {
+  font-size: 16px;
+  color: #fff;
+}
+
+.wrapper .bg-animate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 800px;
+  height: 600px;
+  background: linear-gradient(45deg, #566f7d, #0ef);
+  border-bottom: 3px solid #0ef;
+  transform: rotate(10deg) skewY(40deg);
+  transform-origin: bottom right;
 }
